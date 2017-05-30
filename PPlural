@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Plural
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string word = Console.ReadLine();
+
+            int numberOfLastChar = word.Length-1;
+            int numberOfHalfPastChar = word.Length - 2;
+
+            char lastChar = word[numberOfLastChar];
+            char halfPastChar = word[numberOfHalfPastChar];
+
+            string wordWithoutLast = null;
+            for (int i = 0; i < word.Length-1; i++)
+            {            
+                wordWithoutLast += word[i];           
+            }
+
+            if(lastChar=='y')
+            {
+                word = wordWithoutLast + "ies";
+                Console.WriteLine(word);
+            }
+            else if (lastChar=='o' || halfPastChar=='c' && lastChar=='h' 
+                || lastChar=='s' || halfPastChar == 's' && lastChar=='h' 
+                || lastChar=='x' || lastChar=='z')
+            {
+                word = word + "es";
+                Console.WriteLine(word);
+            }
+            else
+            {
+                word = word + 's';
+                Console.WriteLine(word);
+            }
+
+        }
+    }
+}
